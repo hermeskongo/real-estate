@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!--GOOGLE FONTS-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;500;600;700&display=swap"rel="stylesheet">
+
+    <!--IONICONS-->
+    <link href="https://unpkg.com/boxicons/css/boxicons.min.css" rel="stylesheet">
+    
+    <!--CSS-->
+    <link rel="stylesheet" href="assets/css/style.css">
+
+    <title>KONGO Real-Estate | Acceuil</title>
+</head>
+<body>
+
+    <!--HEADER-->
+    <header class="header" data-header>
+        <div class="container">
+            <a href="#" class="logo">
+                <i class="bx bx-buildings"></i>
+                <p>Real-Estate</p>
+            </a>
+            <nav class="navbar">
+                <ul class="navbarlist">
+                    <li><a href="#" class="nav-item">Acceuil</a></li>
+                    <li><a href="#" class="nav-item">Achats</a></li>
+                    <li><a href="#" class="nav-item">Location</a></li>
+                    <li><a href="#" class="nav-item">Tous les biens</a></li>
+                    <li><a href="#" class="nav-item">A propos de nous</a></li>
+                    <li><a href="#" class="nav-item">Contact</a></li>
+                </ul>
+            </nav>
+            <a href="#" class="btn btn-secondary">S'inscrire</a>
+            <button type="button" class="navbar_toggle">
+                <i class="bx bx-menu" aria-hidden="true"></i>
+                <i  class="bx bx-x" aria-hidden="true"></i>
+            </button>
+        </div>
+    </header>
+
+    <!--HERO-->
+    <section class="hero">
+        <div class="container">
+            <div class="bg">
+                <div class="content">
+                    <h1 class="first-text">
+                        Nous vous aiderons à trouver une <span class="color">magnifique</span> maison.
+                    </h1>
+                    <p class="second-text">
+                        Découvrez notre superbe plateforme où nous vous aidons à trouver votre maison de rêve sans commission, sans frais cachés et sans agent.
+                    </p>
+                </div>
+            </div>
+            <div class="properties_type">
+                <div class="type">
+                    <a href="#">
+                        <i class="bx bx-building-house"></i>Acheter
+                    </a>
+                </div>
+                <div class="type">
+                    <a href="#">
+                        <i class="bx bx-building"></i>Louer
+                    </a>
+                </div>
+            </div>
+
+            <form action="" class="hero-form">
+                <div class="form-group">
+                    <label for="search">Rechercher</label>
+                    <div class="input-item">
+                        <i class="bx bx-search"></i>
+                        <input type="search" name="search" id="search" placeholder="Rechercher un bien..." class="form-control">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="categories">Sélectionnez une catégorie</label>
+                    <div class="input-item">
+                        <i class="bx bx-category"></i>
+                        <select name="categories" id="categories" class="form-control">
+                            <option value="all">Tous les biens</option>
+                            <option value="house">Maison</option>
+                            <option value="apartment">Appartement</option>
+                            <option value="office">Bureau</option>
+                            <option value="land">Terrain</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="minprice">Prix minimum</label>
+                    <div class="input-item">
+                        <i class="bx bx-dollar"></i>
+                        <input type="number" name="minprice" id="minprice" placeholder="Prix minimum" class="form-control">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="maxprice">Prix maximum</label>
+                    <div class="input-item">
+                        <i class="bx bx-dollar"></i>
+                        <input type="number" name="maxprice" id="maxprice" placeholder="Prix maximum" class="form-control">
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-secondary">Soumettre</button>
+            </form>
+        </div>
+    </section>
+
+    
+    <!--JS-->
+    <script src="assets/js/script.js"></script>
+
+</body>
+</html>
