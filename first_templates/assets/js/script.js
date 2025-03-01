@@ -38,3 +38,22 @@ const removeNavbar = function () {
 
 addEventOnElement(navbarToggler, 'click', toggleNavbar);
 addEventOnElement(navbarItems, 'click', removeNavbar);
+
+
+/**
+ * Ajout d'un écouteur d'événement pour le scroll.
+ * 
+ */
+
+const header = document.querySelector('[data-header]');
+const topBtn = document.querySelector('.back-to-top');
+
+window.addEventListener('scroll', () => {
+    if(window.scrollY >= 1000) {
+        header.classList.add('active');
+        topBtn.classList.add('active');
+    } else {
+        header.classList.remove('active');
+        topBtn.classList.remove('active');
+    }
+})
