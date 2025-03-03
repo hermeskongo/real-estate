@@ -193,7 +193,7 @@ button {
 }
 
 .logo {
-    font-size: var(--fs-2);
+    font-size: var(--fs-1);
     font-weight: var(--fw-600);
     color: var(--black);
     display: flex;
@@ -564,7 +564,7 @@ button {
 }
 .properties .property-item .footer {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     gap: 20px;
     padding-block: 10px;
