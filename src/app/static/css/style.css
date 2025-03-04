@@ -141,6 +141,7 @@ button {
     color: var(--green-pigment);
 }
 
+
 .section-title {
     text-align: center;
     margin-bottom: 35px;
@@ -148,7 +149,19 @@ button {
     font-weight: var(--fw-500);
     color: var(--oxford-blue);
 }
+#loading {
+    text-align: center;
+    margin-top: 10px;
+    display: none;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+}
 
+.htmx-request #loading {
+    display: block !important;
+    opacity: 1;
+    transform: translate(15%, -5%);
+}
 /* HEADER SECTION */
 
 
@@ -354,6 +367,16 @@ button {
     border-radius: var(--radius-16);
     box-shadow: var(--shadow-1);
     padding: 35px;
+}
+.hero-form p {
+    text-align: center;
+    line-height: 1.8;
+    font-size: var(--fs-3);
+    grid-column: span 2;
+    color: var(--oxford-blue);
+}
+.hero-form .section-title {
+    grid-column: span 2;
 }
 
 .hero-form .form-control {
@@ -896,7 +919,7 @@ footer .color {
     .container {
         max-width: 950px;
         width: 100%;
-    } 
+    }
     /*NAVBAR*/
     .navbar,
     .navbar.active {
@@ -907,15 +930,16 @@ footer .color {
     .navbar .navbarlist {
         display: flex;
         align-items: center;
-        justify-content: space-between;
+        justify-content: center;
         padding-inline: 15px;
-    } 
+        gap: 50px;
+    }
     .nav-item {
         opacity: 1;
         transition: var(--transition);
         color: var(--oxford-blue);
     }
-    
+
     .navbar_toggle {
         display: none;
         visibility: hidden;
@@ -929,7 +953,7 @@ footer .color {
         grid-template-columns: 4fr 5fr;
     }
 
-    /*PROPERTIES*/ 
+    /*PROPERTIES*/
     .properties .properties-list {
         grid-template-columns: repeat(2, 1fr);
     }

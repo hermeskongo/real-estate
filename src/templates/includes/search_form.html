@@ -1,0 +1,36 @@
+{% load widget_tweaks %}
+{% load static %}
+
+<section class="hero" style="margin-bottom: 0!important;">
+    <h1 class="section-title">Trouver votre maison de rêve !</h1>
+    <form hx-get="{% url 'properties:index' %}" hx-target="#results" hx-trigger="input delay:1000ms" class="hero-form" hx-indicator="#loading">
+        <div class="form-group">
+            <label for="categories">Sélectionnez une catégorie</label>
+            <div class="input-item">
+                <i class="bx bx-category"></i>
+                {{ form.category }}
+            </div>
+        </div>
+        <div class="form-group">
+            <label>Pays</label>
+            <div class="input-item">
+                <i class='bx bxs-flag-alt'></i>
+                {{ form.country }}
+            </div>
+        </div>
+        <div class="form-group">
+            <label>Prix minimum</label>
+            <div class="input-item">
+                <i class="bx bx-dollar"></i>
+                {{ form.min_price|attr:"placeholder:Entrez le prix minimum" }}
+            </div>
+        </div>
+        <div class="form-group">
+            <label>Prix maximum</label>
+            <div class="input-item">
+                <i class="bx bx-dollar"></i>
+                {{ form.max_price|attr:"placeholder:Entrez le prix maximum" }}
+            </div>
+        </div>
+    </form>
+</section>

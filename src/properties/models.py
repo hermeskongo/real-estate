@@ -8,7 +8,7 @@ from utils.constants import COUNTRIES, CATEGORY_TYPE
 
 class Categories(models.Model):
     name = models.CharField(max_length=75, verbose_name='Nom', unique=True)
-    category_type = models.CharField(_("Type"), max_length=15, choices=CATEGORY_TYPE, null=True)
+    category_type = models.CharField(_("Type"), max_length=15, choices=CATEGORY_TYPE, null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
     
     class Meta:
@@ -59,7 +59,7 @@ class Properties(models.Model):
     bedrooms = models.PositiveIntegerField(_("Chambres"))
     bathrooms = models.PositiveIntegerField(_("Douches"))
     rooms = models.PositiveIntegerField(_("Pièces"))
-    surface = models.PositiveIntegerField(_("Surface"), default=35)
+    surface = models.PositiveIntegerField(_("Surface"),)
     price = models.DecimalField(_("Prix"), decimal_places=0, max_digits=12)
     country = models.CharField(max_length=75, choices=COUNTRIES, verbose_name=_('Pays'))
     city = models.CharField(_("Ville"), max_length=75)

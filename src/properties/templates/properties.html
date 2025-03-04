@@ -1,20 +1,22 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block title %} Propriétés{% endblock %}
 {% block search_title %}Trouver votre maison de rêve !{% endblock %}
 
-{% block properties_title %}Tous nos biens{% endblock %}
-
 {% block content %}
-<section class="hero">
-    <div class="container">
-        {% include 'includes/search.html' %}
-    </div>
-</section>
+
+{% include 'includes/search_form.html' %}
+
 <section class="properties">
     <div class="container">
-        <h1 class="section-title">Tous nos biens immobilier</h1>
-        {% include 'includes/properties.html' %}
+        <div id="loading" class="htmx-indicator">
+            <img src="{% static 'images/loading_icon.gif' %}" alt="Chargement..." width="250">
+        </div>
+        <h1 class="section-title">{{ title }}</h1>
+        <div class="properties-list" id="results">
+            {% include 'includes/results.html' %}
+        </div>
     </div>
 </section>
 {% endblock %}

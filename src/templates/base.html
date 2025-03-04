@@ -18,6 +18,9 @@
     <link rel="stylesheet" href="{% static "css/style.css" %}">
 
     <title>KONGO Real-Estate |{% block title %}Acceuil{% endblock title %}</title>
+
+    <!--HTMX-->
+    <script src="https://unpkg.com/htmx.org@2.0.4" integrity="sha384-HGfztofotfshcF7+8n44JQL2oJmowVChPTg48S+jvZoztPfvwD79OC/LTtG6dMp+" crossorigin="anonymous"></script>
 </head>
 <body>
     {% include "includes/header.html" %}
@@ -27,6 +30,12 @@
     {% endblock content %}
 
     {% include "includes/footer.html" %}
+
+
+    <!--BACK TO TOP-->
+    <a href="#top" class="back-to-top">
+        <i class="bx bx-up-arrow-alt"></i>
+    </a>
     
     <!--JS-->
     <script src="{% static "js/script.js" %}"></script>

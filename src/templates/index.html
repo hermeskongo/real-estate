@@ -27,7 +27,15 @@
                     </a>
                 </div>
             </div>
-            {% include "includes/search.html" %}
+            <div class="hero-form">
+                <h1 class="section-title">Réaliser vos rêves chez <span class="color">KONGO</span> Real-Estate</h1>
+                <p>
+                Bienvenue sur notre site ! Vous êtes à la recherche de la maison idéale ? Que vous soyez un premier acheteur, un investisseur ou à la recherche de votre résidence secondaire, nous sommes là pour vous aider à trouver le bien qui correspond parfaitement à vos attentes.
+                Nous proposons une large sélection de maisons, appartements et propriétés dans les meilleurs quartiers. Grâce à notre expertise locale et notre connaissance approfondie du marché immobilier, nous vous offrons un accompagnement personnalisé à chaque étape de votre projet.
+                Découvrez des biens qui allient confort, modernité et emplacement privilégié. Notre équipe dédiée se tient à votre disposition pour vous guider, vous conseiller, et surtout, vous permettre de concrétiser votre rêve immobilier en toute sérénité.
+                Laissez-vous séduire par nos offres et trouvez aujourd’hui la maison qui répond à toutes vos aspirations !
+                </p>
+            </div>
         </div>
     </section>
 
@@ -92,13 +100,15 @@
     <section class="properties">
         <div class="container">
             <h2 class="section-title">Nos biens</h2>
+            <div class="properties-list">
+                {% include 'includes/results.html' %}
+            </div>
             <div class="more">
                 <a href="" class="btn btn-secondary">Voir tous</a>
             </div>
         </div>
     </section>
 
-    {% include "includes/properties.html" %}
     <!--CONTACT-->
     <section class="contact">
         <div class="container">
@@ -129,9 +139,5 @@
             </form>
         </div>
     </section>
-    
-    <!--BACK TO TOP-->
-    <a href="#top" class="back-to-top">
-        <i class="bx bx-up-arrow-alt"></i>
-    </a>
+
 {% endblock content %}

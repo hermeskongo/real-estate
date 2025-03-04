@@ -2,16 +2,14 @@
     <!--HEADER-->
     <header class="header" data-header>
         <div class="container">
-            <a href="#" class="logo">
+            <a href="{% url 'home' %}" class="logo">
                 <i class="bx bx-buildings"></i>
                 <p>Real-Estate</p>
             </a>
             <nav class="navbar">
                 <ul class="navbarlist">
-                    <li><a href="#" class="nav-item">Acceuil</a></li>
-                    <li><a href="#" class="nav-item">Achats</a></li>
-                    <li><a href="#" class="nav-item">Location</a></li>
-                    <li><a href="#" class="nav-item">Nos biens</a></li>
+                    <li><a href="{% url 'home' %}" class="nav-item">Acceuil</a></li>
+                    <li><a href="{% url 'properties:index' %}" class="nav-item">Nos biens</a></li>
                     <li><a href="#" class="nav-item">A propos</a></li>
                 </ul>
             </nav>

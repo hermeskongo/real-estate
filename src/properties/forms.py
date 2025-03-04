@@ -9,10 +9,11 @@ class SearchForm(forms.ModelForm):
     
     class Meta:
         model = Properties
-        fields = ['name', 'category', 'bedrooms', 'bathrooms', 'rooms', 'country', 'surface']
+        fields = ['category', 'country',]
         
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         for field in self.fields.values():
             field.widget.attrs['class'] = 'form-control'
+            field.required = False
             
