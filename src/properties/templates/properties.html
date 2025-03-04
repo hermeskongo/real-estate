@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block title %} Propriétés{% endblock %}
+{% block search_title %}Trouver votre maison de rêve !{% endblock %}
+
+{% block properties_title %}Tous nos biens{% endblock %}
+
+{% block content %}
+<section class="hero">
+    <div class="container">
+        {% include 'includes/search.html' %}
+    </div>
+</section>
+<section class="properties">
+    <div class="container">
+        <h1 class="section-title">Tous nos biens immobilier</h1>
+        {% include 'includes/properties.html' %}
+    </div>
+</section>
+{% endblock %}
