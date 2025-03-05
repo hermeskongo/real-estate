@@ -1,10 +1,148 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+{% extends 'base.html' %}
+
+{% load humanize %}
+
+{% block content %}
+    <section class="detail">
+        <div class="container">
+            <h1 class="section-title">Sweet royale</h1>
+            <img src="{{property.image.url}}" alt="Image 3" style="margin-top: 15px">
+            <div class="detail-header-text">
+                <div class="left">
+                    <h1>{{ property.address }}, {{ property.city }}, {{ property.country }}</h1>
+                    <div class="icons">
+                        <div class="icons-item">
+                            <i class="bx bx-bed"></i>
+                            <span>{{ property.bedrooms }} lits</span>
+                        </div>
+                        <div class="icons-item">
+                            <i class="bx bx-bath"></i>
+                            <span>{{ property.bathrooms }} douches</span>
+                        </div>
+                        <div class="icons-item">
+                            <i class="bx bx-cube"></i>
+                            <span>{{ property.surface }}m²</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="right">
+                    {% if property.category.name == 'Vente' %}
+                        <p class="price">{{ property.price|intcomma }}$</p>
+                    {% else %}
+                        {% if property.category.category_type == 'mensuel' %}
+                            <p class="price">{{ property.price|intcomma }}$/Mois</p>
+                        {% elif property.category.category_type == 'journalier' %}
+                            <p class="price">{{ property.price|intcomma }}$/Jour</p>
+                        {% endif %}
+                    {% endif %}
+                    <a href="" class="btn btn-secondary"> Réservez</a>
+                </div>
+            </div>
+            <div class="detail-content">
+                <div class="basics">
+                    <h2 class="sus-title">Essentiels <span class="trait"></span></h2>
+                    <div class="content">
+                        <div class="basics-item">
+                            <p><strong>Date d'ajout:</strong></p>
+                            <p>{{ property.created_at|naturaltime}}</p>
+                        </div>
+                        <div class="basics-item">
+                            <p><strong>Type:</strong></p>
+                            <p>{{ property.category.name }}</p>
+                        </div>
+                        <div class="basics-item">
+                            <p><strong>Chambres:</strong></p>
+                            <p>{{ property.bedrooms }}</p>
+                        </div>
+                        <div class="basics-item">
+                            <p><strong>Douches:</strong></p>
+                            <p>{{ property.bathrooms }}</p>
+                        </div>
+                        <div class="basics-item">
+                            <p><strong>Surface:</strong></p>
+                            <p>{{ property.surface }}m²</p>
+                        </div>
+                        <div class="basics-item">
+                            <p><strong>Prix par m²</strong></p>
+                            <p>{{ property.price_per_surface | intcomma }}$</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="description">
+                    <h2 class="sus-title">
+                        Description
+                        <span class="trait"></span>
+                    </h2>
+                    <p class="description">
+                        {{ property.description|linebreaksbr }}
+                    </p>
+                </div>
+                <div class="options">
+                    <h2 class="sus-title">
+                        <span class="trait"></span>
+                        Équipements & Caractéristiques
+                        <span class="trait"></span>
+                    </h2>
+                    <div class="options-grid">
+                        <div class="option-item">
+                            <h3>Piscine</h3>
+                            <p>Disponibilité d'une piscine</p>
+                        </div>
+                        <div class="option-item">
+                            <h3>Piscine</h3>
+                            <p>Disponibilité d'une piscine</p>
+                        </div>
+                        <div class="option-item">
+                            <h3>Piscine</h3>
+                            <p>Disponibilité d'une piscine</p>
+                        </div>
+                        <div class="option-item">
+                            <h3>Piscine</h3>
+                            <p>Disponibilité d'une piscine</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="buildings">
+                    <h2 class="sus-title">
+                        <span class="trait"></span>
+                        Batîment
+                        <span class="trait"></span>
+                    </h2>
+                    <div class="buildings-grid">
+                        <div class="building-item">
+                            <h3>Nom:</h3>
+                            <p>{{ property.building.name }}</p>
+                        </div>
+                        <div class="building-item">
+                            <h3>Refroidissement:</h3>
+                            <p>{{ property.building.cooling }}</p>
+                        </div>
+                        <div class="building-item">
+                            <h3>Rechauffement:</h3>
+                            <p>{{ property.building.heater }}</p>
+                        </div>
+                        <div class="building-item">
+                            <h3>Espace du garage:</h3>
+                            <p>{{ property.building.nb_garage }}</p>
+                        </div>
+                        <div class="building-item">
+                            <h3>Matériel de construction:</h3>
+                            <p>{{ property.building.materials }}</p>
+                        </div>
+                        <div class="building-item">
+                            <h3>Nouveau:</h3>
+                            <p>
+                                {% if property.building.new %}
+                                    Oui !
+                                {% else %}
+                                    Non.
+                                {% endif %}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+{% endblock %}

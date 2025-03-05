@@ -27,7 +27,7 @@
     /* Font variables */
         /*Family*/
         --ff-spartan: 'League Spartan', sans-serif;
-        
+
         /*Size*/
         --fs-1: 3.6rem;
         --fs-2: 2.4rem;
@@ -141,7 +141,6 @@ button {
     color: var(--green-pigment);
 }
 
-
 .section-title {
     text-align: center;
     margin-bottom: 35px;
@@ -149,19 +148,14 @@ button {
     font-weight: var(--fw-500);
     color: var(--oxford-blue);
 }
-#loading {
-    text-align: center;
-    margin-top: 10px;
-    display: none;
-    opacity: 0;
-    transition: opacity 0.3s ease-in-out;
+
+.sus-title {
+    font-weight: 200;
+    font-size: var(--fs-2);
+    color: var(--oxford-blue);
+    margin-bottom: 15px;
 }
 
-.htmx-request #loading {
-    display: block !important;
-    opacity: 1;
-    transform: translate(15%, -5%);
-}
 /* HEADER SECTION */
 
 
@@ -206,7 +200,8 @@ button {
 }
 
 .logo {
-    font-size: var(--fs-1);
+    font-size: 2.2rem;
+    margin-right: 2px;
     font-weight: var(--fw-600);
     color: var(--black);
     display: flex;
@@ -368,6 +363,8 @@ button {
     box-shadow: var(--shadow-1);
     padding: 35px;
 }
+
+
 .hero-form p {
     text-align: center;
     line-height: 1.8;
@@ -813,12 +810,12 @@ footer .color {
         justify-content: center;
         gap: 15px;
     }
-    
+
     /*SERVICES*/
     .services .service-list {
         grid-template-columns: repeat(2, 1fr);
     }
-    
+
 
     /*PROPERTIES*/
     .properties .property-item .after-image{
@@ -845,7 +842,7 @@ footer .color {
     }
     /*HEADER*/
     .header .logo {
-        font-size: var(--fs-2) !important;
+        font-size: var(--fs-3);
         width: 250px;
         justify-content: flex-start;
     }
@@ -860,7 +857,7 @@ footer .color {
         padding-inline: 120px;
     }
     .hero-form {
-        grid-template-columns: repeat(2, 1fr);    
+        grid-template-columns: repeat(2, 1fr);
     }
     .hero-form .btn {
         position: relative;
@@ -900,7 +897,7 @@ footer .color {
         gap: 20px;
         align-items: center;
     }
-    
+
     /*FOOTER SECTION*/
     footer .footer-section {
         display: grid;
@@ -912,7 +909,51 @@ footer .color {
         transform: translateY(5%);
     }
 
-    
+    /*DETAILS VIEW / OPTIONS*/
+    .options .options-grid {
+        grid-template-columns: repeat(2, 1fr);
+        width: 75%;
+        position: relative;
+        left: 12%;
+    }
+    .options .options-grid .option-item {
+        padding-block: 25px ;
+        display: block;
+        margin-inline: auto;
+    }
+
+    /*DETAIL VIEW / BASICS*/
+
+    .detail-content .basics .content{
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        column-gap: 150px;
+        width: 90%;
+        position: relative;
+        left: 5%;
+    }
+    .detail {
+        margin-top: 10% !important;
+    }
+
+    .buildings-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        column-gap: 150px;
+        width: 90%;
+        position: relative;
+        left: 5%;
+    }
+    .detail-content .description p{
+        width: 90%;
+        line-height: 2.2 !important;
+        position: relative;
+        left: 5%;
+    }
+
+    .sus-title {
+        margin-block: 35px;
+    }
 }
 
 @media (min-width:950px) {
@@ -931,15 +972,14 @@ footer .color {
         display: flex;
         align-items: center;
         justify-content: center;
+        gap: 25px;
         padding-inline: 15px;
-        gap: 50px;
     }
     .nav-item {
         opacity: 1;
         transition: var(--transition);
         color: var(--oxford-blue);
     }
-
     .navbar_toggle {
         display: none;
         visibility: hidden;
@@ -962,13 +1002,16 @@ footer .color {
     .about .container {
         gap: 50px;
     }
+    .detail {
+        margin-top: 8% !important;
+    }
 }
 
 @media (min-width:1024px) {
     .container {
-        max-width: 1024px;
+        max-width: 1024;
         width: 100%;
-    }  
+    }
     /*NAVBAR*/
     .navbar,
     .navbar.active {
@@ -976,7 +1019,7 @@ footer .color {
     }
 
     /*HERO*/
-    
+
     .hero-form {
         max-width: 80%;
         transform: translateX(12%);
@@ -1000,6 +1043,9 @@ footer .color {
     }
     footer .logo {
         transform: translateY(5%);
+    }
+    .detail {
+        margin-top: 5% !important;
     }
 }
 
@@ -1040,6 +1086,9 @@ footer .color {
     .hero .container {
         max-width: unset;
     }
+    .detail {
+        margin-top: 5% !important;
+    }
 
 }
 @media (min-width:1650px) {
@@ -1063,4 +1112,133 @@ footer .color {
     .properties .properties-list {
         grid-template-columns: repeat(4, 1fr);
     }
+}
+
+
+/*
+*DÉTAILS STYLESHEET
+*/
+
+
+/*GLOBAL*/
+.detail {
+    margin-top: 22%;
+}
+.container {
+    padding: var(--section-padding);
+}
+.detail .section-title {
+    text-align: left;
+    margin-bottom: 5px;
+}
+.detail img {
+    border-radius: 10px;
+    width: 100%;
+}
+.detail-header-text {
+    display: grid;
+    grid-template-columns: 1;
+    gap: 5px;
+}
+.detail .left h1 {
+    font-weight: var(--fw-300);
+    color: var(--oxford-blue);
+    margin-block: 15px;
+}
+.detail .left .icons {
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    gap: 10px;
+}
+.detail .right {
+    text-align: left;
+    margin-top: 15px;
+}
+.detail .price {
+    font-size: var(--fs-2);
+    color: var(--oxford-blue);
+    margin-bottom: 15px;
+}
+.detail .right .btn {
+    width: fit-content;
+    margin-inline: unset;
+}
+
+.detail-content {
+    margin-block: 20px;
+}
+
+.trait {
+    height: 1px;
+    display: block;
+    background-color: var(--cadet-gray);
+    width: 100%;
+}
+.detail-content .sus-title {
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    gap: 10px;
+}
+/*BASICS*/
+.detail-content .basics {
+    display: grid;
+    grid-template-columns: 1;
+    padding-block: 15px;
+}
+
+.basics .basics-item {
+    color: var(--oxford-blue);
+    padding-block: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+.detail-content  .description {
+    padding-bottom: 15px;
+    color: var(--oxford-blue);
+    line-height: 1.6;
+}
+/*OPTIONS*/
+.options {
+    padding-bottom: 15px;
+    text-align: center;
+    color: rgb(49, 45, 45);
+}
+
+.options-grid {
+    display: grid;
+    grid-template-columns: 1;
+}
+.options .option-item h3{
+    font-weight: 100;
+    margin-bottom: 5px;
+    color: var(--black) !important;
+}
+.options .option-item {
+    padding-block: 15px;
+}
+/*BUILDINGS*/
+.buildings {
+    padding-bottom: 15px;
+    text-align: left;
+    color: rgb(49, 45, 45);
+}
+.buildings-grid {
+    display: grid;
+    grid-template-columns: 1;
+}
+.buildings .building-item h3{
+    font-weight: 100;
+    margin-bottom: 5px;
+    color: var(--black) !important;
+}
+.buildings .building-item {
+    padding-top: 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }

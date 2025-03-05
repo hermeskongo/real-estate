@@ -60,6 +60,7 @@ class Properties(models.Model):
     bathrooms = models.PositiveIntegerField(_("Douches"))
     rooms = models.PositiveIntegerField(_("Pièces"))
     surface = models.PositiveIntegerField(_("Surface"),)
+    floor = models.PositiveIntegerField(_("Étage"), default=1)
     price = models.DecimalField(_("Prix"), decimal_places=0, max_digits=12)
     country = models.CharField(max_length=75, choices=COUNTRIES, verbose_name=_('Pays'))
     city = models.CharField(_("Ville"), max_length=75)
@@ -71,6 +72,11 @@ class Properties(models.Model):
     class Meta:
         verbose_name = 'Propriété'
         verbose_name_plural = 'Propriétés'
+        
+    @property
+    def price_per_surface(self):
+        return int(self.price/self.surface)
     
     def __str__(self):
         return self.name
+

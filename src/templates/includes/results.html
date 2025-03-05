@@ -10,7 +10,7 @@
                                 <p class="description">
                                     {{ property.description|truncatewords:25 }}
                                 </p>
-                                {% if property.category.name == 'Achat' %}
+                                {% if property.category.name == 'Vente' %}
                                     <p class="price">{{ property.price|intcomma }}$</p>
                                 {% else %}
                                     {% if property.category.category_type == 'mensuel' %}
@@ -35,7 +35,7 @@
                                 </div>
                             </div>
                             <div class="footer">
-                                <a href="#" class="btn btn-secondary">Détails</a>
+                                <a href="{% url 'properties:details' slug=property.slug  id=property.id %}" class="btn btn-secondary">Détails</a>
                             </div>
                         </div>
                     </div>

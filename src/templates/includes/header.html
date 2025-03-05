@@ -10,7 +10,7 @@
                 <ul class="navbarlist">
                     <li><a href="{% url 'home' %}" class="nav-item">Acceuil</a></li>
                     <li><a href="{% url 'properties:index' %}" class="nav-item">Nos biens</a></li>
-                    <li><a href="#" class="nav-item">A propos</a></li>
+                    <li><a href="{% url 'home' %}#about" class="nav-item">A propos</a></li>
                 </ul>
             </nav>
             <a href="#" class="btn btn-secondary">Contact</a>

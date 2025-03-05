@@ -1,9 +1,6 @@
-from django.contrib import messages
-from django.db.models import QuerySet
 from django.shortcuts import render, get_object_or_404
-
 # Create your views here.
-from django.views.generic import ListView, FormView
+from django.views.generic import ListView, FormView, DetailView
 
 from properties.forms import SearchForm
 from properties.models import Properties, Categories
@@ -49,9 +46,21 @@ class PropertiesListView(ListView, FormView):
     
     def get_context_data(self, *args, **kwargs):
         context = super(PropertiesListView, self).get_context_data(*args, **kwargs)
-
+        
         if self.request.headers.get('HX-Request'):
             context['title'] = 'Résultats de votre recherche'
         else:
             context['title'] = 'Tous nos biens immobiliers'
         return context
+
+
+class PropertiesDetailView(DetailView):
+    model = Properties
+    template_name = 'details.html'
+    context_object_name = 'property'
+    
+    def get_object(self, *args, **kwargs):
+        pk = int(self.kwargs['id'])
+        slug = self.kwargs['slug']
+        
+        return get_object_or_404(Properties, id=pk, slug=slug)

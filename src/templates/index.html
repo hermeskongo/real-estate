@@ -40,7 +40,7 @@
     </section>
 
     <!--ABOUT-->
-    <section class="about">
+    <section id="about" class="about">
         <div class="container">
             <div class="image">
                 <img src="{% static "images/about-banner.jpg" %}" alt="A propos de nous">
@@ -104,7 +104,7 @@
                 {% include 'includes/results.html' %}
             </div>
             <div class="more">
-                <a href="" class="btn btn-secondary">Voir tous</a>
+                <a href="{% url 'properties:index' %}" class="btn btn-secondary">Voir tous</a>
             </div>
         </div>
     </section>
