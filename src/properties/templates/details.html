@@ -6,8 +6,19 @@
     <section class="detail">
         <div class="container">
             {% include 'includes/flash.html' %}
-            <h1 class="section-title">Sweet royale</h1>
-            <img src="{{property.image.url}}" alt="Image 3" style="margin-top: 15px">
+            <h1 class="section-title">{{ property.name}}</h1>
+
+              <!-- Swiper -->
+            <swiper-container class="img-big-wrap mySwiper" navigation="true" pagination="true" keyboard="true" mousewheel="true" css-mode="true">
+                  <swiper-slide>
+                    <img src="{{property.image.url}}" alt="Image {{ property.name }}" style="margin-top: 15px">
+                  </swiper-slide>
+                    {% if property.galeries.all %}
+                        {% for gallery in property.galeries.all %}
+                            <swiper-slide><img src="{{ gallery.image.url }}" alt=""></swiper-slide>
+                        {% endfor %}
+                    {% endif %}
+            </swiper-container>
             <div class="detail-header-text">
                 <div class="left">
                     <h1>{{ property.address }}, {{ property.city }}, {{ property.country }}</h1>
@@ -93,6 +104,7 @@
 
                     </div>
                 </div>
+            {% if property.buiding %}
                 <div class="buildings">
                     <h2 class="sus-title">
                         <span class="trait"></span>
@@ -132,6 +144,7 @@
                         </div>
                     </div>
                 </div>
+            {% endif %}
             </div>
             <div class="contact">
                 <h1 class="section-title"><a href="#contact-form">Réservez ce bien dès maintenant!</a></h1>

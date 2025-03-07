@@ -56,7 +56,7 @@ class Properties(models.Model):
     description = models.TextField(verbose_name=_('Description'))
     category = models.ForeignKey("Categories", verbose_name=_("Catégorie"), on_delete=models.SET_NULL, null=True)
     options = models.ManyToManyField("Options", )
-    building = models.ForeignKey("Buildings", verbose_name=_("Bâtiment"), on_delete=models.CASCADE)
+    building = models.ForeignKey("Buildings", verbose_name=_("Bâtiment"), on_delete=models.CASCADE, null=True, blank=True)
     bedrooms = models.PositiveIntegerField(_("Chambres"))
     bathrooms = models.PositiveIntegerField(_("Douches"))
     rooms = models.PositiveIntegerField(_("Pièces"))
@@ -102,7 +102,7 @@ class Messages(models.Model):
 
 
 class PropertyGallery(models.Model):
-    property = models.ForeignKey(Properties, on_delete=models.CASCADE, verbose_name='Propriété')
+    property = models.ForeignKey(Properties, on_delete=models.CASCADE, verbose_name='Propriété', related_name='galeries')
     image = models.ImageField(_("Image"), upload_to='properties/gallery')
     
     class Meta:

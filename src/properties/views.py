@@ -80,12 +80,28 @@ class PropertiesDetailView(DetailView):
     def post(self, *args, **kwargs):
         self.object = self.get_object()
         contact_form = MessagesForm(self.request.POST)
+        
         if contact_form.is_valid():
+            # Récupération des donnés du formulaires pour ensuite récupérer le message envoyé et lui attribué une propriété
+            last_name = self.request.POST.get('last_name')
+            first_name = self.request.POST.get('first_name')
+            email = self.request.POST.get('email')
+            phone = self.request.POST.get('phone_number')
+            content = self.request.POST.get('content')
+            
+            
             contact_form.save()
+            
+            # Récupération du message venant d'être envyé et assignation de la propriété correspondante
+            message = Messages.objects.filter(last_name=last_name, first_name=first_name, email=email, phone_number=phone, content=content).last()
+            message.properties = self.get_object()
+            message.save()
+            
+            # Messages de succès !
             messages.success(self.request, "Votre message a bien été envoyé. Merci à vous !")
             
+            
         else:
-            messages.error(self.request, "Votre message n'a pas été envoyé :(")
             context = self.get_context_data(**kwargs)
             context['form'] = contact_form
             return self.render_to_response(context)
