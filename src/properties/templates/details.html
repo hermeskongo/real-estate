@@ -5,6 +5,7 @@
 {% block content %}
     <section class="detail">
         <div class="container">
+            {% include 'includes/flash.html' %}
             <h1 class="section-title">Sweet royale</h1>
             <img src="{{property.image.url}}" alt="Image 3" style="margin-top: 15px">
             <div class="detail-header-text">
@@ -35,7 +36,7 @@
                             <p class="price">{{ property.price|intcomma }}$/Jour</p>
                         {% endif %}
                     {% endif %}
-                    <a href="" class="btn btn-secondary"> Réservez</a>
+                    <a href="#contact-form" class="btn btn-secondary"> Réservez</a>
                 </div>
             </div>
             <div class="detail-content">
@@ -84,22 +85,12 @@
                         <span class="trait"></span>
                     </h2>
                     <div class="options-grid">
-                        <div class="option-item">
-                            <h3>Piscine</h3>
-                            <p>Disponibilité d'une piscine</p>
-                        </div>
-                        <div class="option-item">
-                            <h3>Piscine</h3>
-                            <p>Disponibilité d'une piscine</p>
-                        </div>
-                        <div class="option-item">
-                            <h3>Piscine</h3>
-                            <p>Disponibilité d'une piscine</p>
-                        </div>
-                        <div class="option-item">
-                            <h3>Piscine</h3>
-                            <p>Disponibilité d'une piscine</p>
-                        </div>
+                        {% for option in property.options.all %}
+                            <div class="option-item">
+                                <h3>{{ option.name }}</h3>
+                            </div>
+                        {% endfor %}
+
                     </div>
                 </div>
                 <div class="buildings">
@@ -142,7 +133,10 @@
                     </div>
                 </div>
             </div>
+            <div class="contact">
+                <h1 class="section-title"><a href="#contact-form">Réservez ce bien dès maintenant!</a></h1>
+                {% include 'includes/contact-form.html' %}
+            </div>
         </div>
     </section>
-
 {% endblock %}

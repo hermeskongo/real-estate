@@ -57,3 +57,21 @@ window.addEventListener('scroll', () => {
         topBtn.classList.remove('active');
     }
 })
+
+
+const phoneInputField = document.querySelector("#id_phone_number");
+const phoneInput = window.intlTelInput(phoneInputField, {
+    preferredCountries: ["bf", "fr"],
+    separateDialCode: true,
+    utilsScript: "https://cdn.jsdelivr.net/npm/intl-tel-input@18.2.1/build/js/utils.js",
+});
+
+const all_success = document.querySelectorAll('.alert-success');
+
+all_success.forEach(success =>{
+    if(success) {
+        setTimeout(() => {
+            success.style.display = 'none'
+        }, 4500)
+    }
+})

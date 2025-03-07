@@ -3,7 +3,13 @@
 
 <section class="hero" style="margin-bottom: 0!important;">
     <h1 class="section-title">Trouver votre maison de rêve !</h1>
-    <form hx-get="{% url 'properties:index' %}" hx-target="#results" hx-trigger="input delay:1000ms" class="hero-form" hx-indicator="#loading">
+    <form  class="hero-form"
+            hx-get="{% url 'properties:index' %}"
+            hx-target="#results"
+            hx-trigger="input delay:500ms"
+            hx-indicator=".spinner"
+    >
+
         <div class="form-group">
             <label for="categories">Sélectionnez une catégorie</label>
             <div class="input-item">

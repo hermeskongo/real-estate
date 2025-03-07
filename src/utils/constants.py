@@ -115,3 +115,9 @@ CATEGORY_TYPE = (
     ('mensuel', 'Mensuel'),
     ('journalier', 'Journalier')
 )
+
+SUBJECT_LIST = (
+    ('Programmation d\'une visite', 'Programmation d\'une visite'),
+    ("Plus d'information", "Plus d'information"),
+    ("Réservation du bien", "Réservation du bien"),
+)

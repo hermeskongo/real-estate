@@ -364,25 +364,25 @@ button {
     padding: 35px;
 }
 
-.hero-form .form-control {
+.form-control {
     padding: 1.2rem 2rem;
     padding-left: 35px;
     width: 100%;
     border: solid 1px var(--light-gray);
     margin-bottom: 15px;
 }
-.hero-form .form-group .input-item {
+.form-group .input-item {
     align-items: center;
 }
 
-.hero-form .form-group .input-item i {
+.form-group .input-item i {
     color: var(--green-pigment);
     transform: translate(50%, 180%);
 }
 
-.hero-form .form-control::selection,
-.hero-form .form-control:focus,
-.hero-form .form-control:focus-visible {
+.form-control::selection,
+.form-control:focus,
+.form-control:focus-visible {
     outline: none;
     border: solid 1px var(--green-pigment);
     box-shadow: var(--shadow-1);
@@ -767,6 +767,27 @@ footer .color {
     transform: translateY(6%);
 }
 
+/*MESSAGE PAGE SETUP STYLE*/
+
+.contact-message {
+    margin-top: 24%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 2rem;
+}
+
+.contact-form {
+    width: 100%;
+    max-width: 500px;
+    background-color: #fff;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+
 /* MEDIA QUERIES */
 
 @media (min-width:640px) {
@@ -813,6 +834,11 @@ footer .color {
     .newsletter {
         width: 70%;
         transform: translate(20%, 30%);
+    }
+
+    /*CONTACT MESSAGE*/
+    .contact-message {
+        margin-top: 15%;
     }
 
 }
@@ -897,6 +923,11 @@ footer .color {
         transform: translateY(5%);
     }
 
+    /*CONTACT MESSAGE*/
+    .contact-message {
+        margin-top: 10%;
+    }
+
     
 }
 
@@ -945,6 +976,7 @@ footer .color {
     .about .container {
         gap: 50px;
     }
+
 }
 
 @media (min-width:1024px) {
@@ -983,6 +1015,11 @@ footer .color {
     }
     footer .logo {
         transform: translateY(5%);
+    }
+
+    /*CONTACT MESSAGE*/
+    .contact-message {
+        margin-top: 8%;
     }
 }
 
@@ -1045,6 +1082,11 @@ footer .color {
 
     .properties .properties-list {
         grid-template-columns: repeat(4, 1fr);
+    }
+
+    /*CONTACT MESSAGE*/
+    .contact-message {
+        margin-top: 5%;
     }
 }
 
@@ -1153,9 +1195,6 @@ footer .color {
     padding-block: 15px;
 }
 
-
-
-
 .buildings {
     padding-bottom: 15px;
     text-align: left;
@@ -1176,3 +1215,11 @@ footer .color {
     justify-content: space-between;
     align-items: center;
 }
+.help-text {
+    font-size: var(--fs-4);
+    color: var(--cadet-gray);
+    margin-top: 5px;
+    font-style: italic;
+    line-height: 1.4;
+}
+

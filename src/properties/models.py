@@ -1,7 +1,8 @@
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 
-from utils.constants import COUNTRIES, CATEGORY_TYPE
+from utils.constants import COUNTRIES, CATEGORY_TYPE, SUBJECT_LIST
+from phonenumber_field.modelfields import PhoneNumberField
 
 
 # Create your models here.
@@ -21,7 +22,7 @@ class Categories(models.Model):
 
 class Options(models.Model):
     name = models.CharField(_("Nom"), max_length=50)
-    description = models.TextField(_("Description"), max_length=300)
+    description = models.TextField(_("Description"), max_length=300, blank=True)
     created_at = models.DateTimeField(_("Créé le"), auto_now=False, auto_now_add=True)
     
     class Meta:
@@ -59,7 +60,7 @@ class Properties(models.Model):
     bedrooms = models.PositiveIntegerField(_("Chambres"))
     bathrooms = models.PositiveIntegerField(_("Douches"))
     rooms = models.PositiveIntegerField(_("Pièces"))
-    surface = models.PositiveIntegerField(_("Surface"),)
+    surface = models.PositiveIntegerField(_("Surface"), )
     floor = models.PositiveIntegerField(_("Étage"), default=1)
     price = models.DecimalField(_("Prix"), decimal_places=0, max_digits=12)
     country = models.CharField(max_length=75, choices=COUNTRIES, verbose_name=_('Pays'))
@@ -72,11 +73,42 @@ class Properties(models.Model):
     class Meta:
         verbose_name = 'Propriété'
         verbose_name_plural = 'Propriétés'
-        
+    
     @property
     def price_per_surface(self):
-        return int(self.price/self.surface)
+        return int(self.price / self.surface)
     
     def __str__(self):
         return self.name
 
+
+class Messages(models.Model):
+    subject = models.CharField(_("Sujet du message"), max_length=50, choices=SUBJECT_LIST)
+    first_name = models.CharField(_("Prénom"), max_length=75, blank=True)
+    properties = models.ForeignKey(Properties, on_delete=models.CASCADE, null=True)
+    last_name = models.CharField(_("Nom"), max_length=50)
+    email = models.EmailField(_("E-mail"), max_length=254)
+    content = models.TextField(_("Contenu"), blank=True)
+    phone_number = PhoneNumberField(unique=False, blank=True, null=True, error_messages={
+        'invalid': 'Veuillez entrez un numéro de téléphone valide'
+    })
+    
+    class Meta:
+        verbose_name = _("Message")
+        verbose_name_plural = _("Messages")
+    
+    def __str__(self):
+        return f"Message de {self.first_name} {self.last_name} sur le sujet: \"{self.subject}\""
+
+
+class PropertyGallery(models.Model):
+    property = models.ForeignKey(Properties, on_delete=models.CASCADE, verbose_name='Propriété')
+    image = models.ImageField(_("Image"), upload_to='properties/gallery')
+    
+    class Meta:
+        verbose_name = "Galerie d'images"
+        verbose_name_plural = "Galerie d'images"
+        
+    def __str__(self):
+        return f"Galerie d'image de {self.property.name}"
+    

@@ -1,9 +1,13 @@
-from django.shortcuts import render, get_object_or_404
-# Create your views here.
-from django.views.generic import ListView, FormView, DetailView
+import time
 
-from properties.forms import SearchForm
-from properties.models import Properties, Categories
+from django.contrib import messages
+from django.shortcuts import render, get_object_or_404, redirect
+# Create your views here.
+from django.urls import reverse_lazy
+from django.views.generic import ListView, FormView, DetailView, CreateView
+
+from properties.forms import SearchForm, MessagesForm
+from properties.models import Properties, Categories, Messages
 
 
 class PropertiesListView(ListView, FormView):
@@ -16,6 +20,7 @@ class PropertiesListView(ListView, FormView):
         response = super(PropertiesListView, self).get(*args, **kwargs)
         
         if self.request.headers.get('HX-Request'):
+            time.sleep(1.5)
             return render(self.request, 'includes/results.html', {'properties': self.object_list})
         return response
     
@@ -51,6 +56,7 @@ class PropertiesListView(ListView, FormView):
             context['title'] = 'Résultats de votre recherche'
         else:
             context['title'] = 'Tous nos biens immobiliers'
+        
         return context
 
 
@@ -58,9 +64,42 @@ class PropertiesDetailView(DetailView):
     model = Properties
     template_name = 'details.html'
     context_object_name = 'property'
-    
+
     def get_object(self, *args, **kwargs):
         pk = int(self.kwargs['id'])
         slug = self.kwargs['slug']
         
         return get_object_or_404(Properties, id=pk, slug=slug)
+    
+    def get_context_data(self, *args, **kwargs):
+        context = super(PropertiesDetailView, self).get_context_data(*args, **kwargs)
+        context['form'] = MessagesForm()
+        
+        return context
+    
+    def post(self, *args, **kwargs):
+        self.object = self.get_object()
+        contact_form = MessagesForm(self.request.POST)
+        if contact_form.is_valid():
+            contact_form.save()
+            messages.success(self.request, "Votre message a bien été envoyé. Merci à vous !")
+            
+        else:
+            messages.error(self.request, "Votre message n'a pas été envoyé :(")
+            context = self.get_context_data(**kwargs)
+            context['form'] = contact_form
+            return self.render_to_response(context)
+        
+        new_path = str(self.request.path) + "#contact-form"
+        return redirect(new_path)
+    
+
+class ContactView(CreateView):
+    model = Messages
+    form_class = MessagesForm
+    template_name = 'contact.html'
+    success_url = reverse_lazy("properties:contact")
+    
+    def form_valid(self, form):
+        messages.success(self.request, "Votre message a bien été envoyé, nous vous reviendrons")
+        return super(ContactView, self).form_valid(form)

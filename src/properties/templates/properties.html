@@ -10,10 +10,8 @@
 
 <section class="properties">
     <div class="container">
-        <div id="loading" class="htmx-indicator">
-            <img src="{% static 'images/loading_icon.gif' %}" alt="Chargement..." width="250">
-        </div>
         <h1 class="section-title">{{ title }}</h1>
+        <div class="spinner htmx-indicator"></div>
         <div class="properties-list" id="results">
             {% include 'includes/results.html' %}
         </div>
