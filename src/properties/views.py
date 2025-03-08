@@ -15,6 +15,7 @@ class PropertiesListView(ListView, FormView):
     form_class = SearchForm
     template_name = "properties.html"
     context_object_name = 'properties'
+    paginate_by = 6
     
     def get(self, *args, **kwargs):
         response = super(PropertiesListView, self).get(*args, **kwargs)

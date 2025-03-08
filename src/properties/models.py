@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils.text import slugify
 from django.utils.translation import gettext_lazy as _
 
 from utils.constants import COUNTRIES, CATEGORY_TYPE, SUBJECT_LIST
@@ -81,6 +82,10 @@ class Properties(models.Model):
     def __str__(self):
         return self.name
 
+    def save(self, *args,):
+        self.slug = slugify(self.name)
+        return super(Properties, self).save(*args)
+    
 
 class Messages(models.Model):
     subject = models.CharField(_("Sujet du message"), max_length=50, choices=SUBJECT_LIST)

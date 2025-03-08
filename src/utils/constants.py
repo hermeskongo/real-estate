@@ -37,6 +37,7 @@ COUNTRIES = (
     ("DK", "Danemark"),
     ("DJ", "Djibouti"),
     ("EG", "Égypte"),
+    ("ES", "Espagne"),
     ("FR", "France"),
     ("DE", "Allemagne"),
     ("GH", "Ghana"),
