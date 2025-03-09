@@ -19,13 +19,13 @@
 <div class="pagination">
     <span class="step-links">
         {% if page_obj.has_previous %}
-            <a href="?page={{ page_obj.previous_page_number }}" class="page-link page-item {% if page_obj.number == page_obj.previous_page_number %}active{% endif %}">&laquo;Précédent</a>
+            <a href="?page={{ page_obj.previous_page_number }}" class="page-link page-item">&laquo;Précédent</a>
         {% endif %}
         {% for page in page_obj.paginator.page_range  %}
             <a href="?page={{ page }}" class="page-link page-item {% if page_obj.number == page %}active{% endif %}">{{ page }}</a>
         {% endfor %}
         {% if page_obj.has_next %}
-            <a href="?page={{ page_obj.next_page_number }}" class="page-link page-item {% if page_obj.number == page_obj.next_page_number %}active{% endif %}">Suivant&raquo;</a>
+            <a href="?page={{ page_obj.next_page_number }}" class="page-link page-item">Suivant&raquo;</a>
         {% endif %}
     </span>
 </div>
