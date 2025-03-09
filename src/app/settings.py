@@ -31,8 +31,6 @@ DEBUG = env.bool("DEBUG", False)
 
 ALLOWED_HOSTS = env.list("ALLOWED_HOSTS")
 
-print(ALLOWED_HOSTS)
-
 # Application definition
 
 INSTALLED_APPS = [
